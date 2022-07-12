@@ -2,12 +2,23 @@ const firstH1 = document.querySelector("h1");
 // span
 const spanStyle = () => {
   const span = document.querySelector("span");
-  const myInterval = setInterval(setColor, 1000);
   span.style.fontSize = "3rem";
-  function setColor() {
-    span.style.color = span.style.color == "yellow" ? "pink" : "yellow";
+  function getRandomColor() {
+    var letters = "0123456789ABCDEF";
+    var color = "#";
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
   }
+
+  function changeColor() {
+    span.style.color = getRandomColor();
+  }
+
+  setInterval(changeColor, 1000);
 };
+
 spanStyle();
 // h2
 const h2 = () => {
@@ -20,7 +31,7 @@ h2();
 // wrapper
 const wrapperStyle = () => {
   const wrapper = document.querySelector(".wrapper");
-  wrapper.style.margin = "5rem 20rem";
+  wrapper.style.margin = "5rem 25%";
   wrapper.style.textAlign = "center";
   wrapper.style.width = "50%";
 };
@@ -29,9 +40,9 @@ wrapperStyle();
 const ul = () => {
   const ul = document.querySelectorAll("li");
   ul.forEach((li, i) => {
-    li.style.padding = "1rem";
-    li.style.margin = "1px auto";
-    li.style.backgroundColor = "green";
+    li.style.padding = "0.8rem";
+    li.style.margin = "2px auto";
+    li.style.backgroundColor = "red";
     li.style.width = "35rem";
     li.style.listStyle = "none";
     li.style.textAlign = "left";
@@ -39,11 +50,11 @@ const ul = () => {
 };
 ul();
 // red li
-const red = () => {
-  const red = document.getElementById("one");
-  red.style.backgroundColor = "red";
+const green = () => {
+  const green = document.getElementById("one");
+  green.style.backgroundColor = "green";
 };
-red();
+green();
 // yellow li
 const yellow = () => {
   const yellow = document.getElementById("two");
@@ -52,50 +63,54 @@ const yellow = () => {
 yellow();
 // date
 const date = new Date();
-const month = () => {
-  const month = date.getMonth();
-  switch (month) {
-    case "0":
-      return "January";
-      break;
-    case "1":
-      return "February";
-      break;
-    case "2":
-      return "March";
-      break;
-    case "3":
-      return "April";
-      break;
-    case "4":
-      return "May";
-      break;
-    case "5":
-      return "June";
-      break;
-    case "6":
-      return "July";
-      break;
-    case "7":
-      return "August";
-      break;
-    case "8":
-      return "September";
-      break;
-    case "9":
-      return "October";
-      break;
-    case "10":
-      return "November";
-      break;
-    case "11":
-      return "December";
-      break;
-  }
+let month = () => {
+  let month = date.getMonth();
+  if (month == 0) {
+    month = "January";
+  } else if (month == 1) {
+    month = "February";
+  } else if (month == 2) {
+    month = "March";
+  } else if (month == 3) {
+    month = "April";
+  } else if (month == 4) {
+    month = "May";
+  } else if (month == 5) {
+    month = "June";
+  } else if (month == 6) {
+    month = "July";
+  } else if (month == 7) {
+    month = "August";
+  } else if (month == 8) {
+    month = "September";
+  } else if (month == 9) {
+    month = "October";
+  } else if (month == 10) {
+    month = "November";
+  } else month = "December";
+
+  return month;
 };
 console.log(month());
 const dateBox = () => {
   const dateBox = document.getElementById("date");
-  dateBox.textContent = ` ${month()} ${date.getDate()},${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+  dateBox.textContent = ` ${month()} ${date.getDate()}, ${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+  dateBox.style.backgroundColor = "red";
+  dateBox.style.width = "10rem";
+  dateBox.style.margin = "auto";
+  function getRandomColor() {
+    var letters = "0123456789ABCDEF";
+    var color = "#";
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+
+  function changeColor() {
+    dateBox.style.backgroundColor = getRandomColor();
+  }
+
+  setInterval(changeColor, 1000);
 };
 dateBox();
